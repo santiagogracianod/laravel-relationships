@@ -24,6 +24,16 @@ class PhoneSeeder extends Seeder
                 'phone_number' => 9876543210,
                 'user_id' => 2,
             ],
+            [
+                'prefix' => 88,
+                'phone_number' => 652316,
+                'user_id' => 2,
+            ],
+            [
+                'prefix' => 442,
+                'phone_number' => 6546145,
+                'user_id' => 2,
+            ],
         ];
 
         foreach ($phones as $phone) {

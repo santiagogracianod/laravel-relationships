@@ -11,11 +11,17 @@
     @forelse ($users as $user)
     <h3> {{ $user->name }} </h3>
     <p> {{ $user->email }} </p>
-    <p> {{ $user->phone->prefix }} </p>
-    <p> {{ $user->phone->phone_number }} </p>
+    <h4>Phone list</h4>
+    <ul>
+        @foreach ($user->phones as $phone)
+            <li> ({{ $phone->prefix }}) {{ $phone->phone_number }}</li>
+        @endforeach
+    </ul>
 
     @empty
         <h1>No users found</h1>
     @endforelse
+
+
 </body>
 </html>
