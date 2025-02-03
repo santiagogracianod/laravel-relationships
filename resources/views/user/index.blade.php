@@ -17,6 +17,14 @@
             <li> ({{ $phone->prefix }}) {{ $phone->phone_number }}</li>
         @endforeach
     </ul>
+    <h4>Roles list</h4>
+    <ul>
+        @forelse ($user->roles as $rol)
+            <li> {{ $rol->name }} </li>
+        @empty
+            <p>No roles found</p>
+        @endforelse
+    </ul>
 
     @empty
         <h1>No users found</h1>
