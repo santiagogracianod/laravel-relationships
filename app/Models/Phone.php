@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Phone extends Model
@@ -18,6 +19,11 @@ class Phone extends Model
     public function sim(): HasOne
     {
         return $this->hasOne(Sim::class, 'phone_id', 'id');
+    }
+
+    public function sims(): HasMany
+    {
+        return $this->hasMany(Sim::class);
     }
 
 }

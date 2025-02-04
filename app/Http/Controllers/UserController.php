@@ -15,7 +15,7 @@ class UserController extends Controller
 
 
         /* foreach ($users as $user) {
-            dd($user->phone->prefix);
+            dd($user->phones);
         } */
 
         return view('user.index', compact('users'));

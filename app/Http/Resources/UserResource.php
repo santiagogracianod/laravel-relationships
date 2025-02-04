@@ -28,6 +28,9 @@ class UserResource extends JsonResource
                     'name' => $role->name,
                     'added_by' => $role->pivot->added_by
                 ];
+            })->toArray(),
+            'sims' => $this->phoneSims->map(function($sim) {
+                return $sim->company;
             })->toArray()
         ];
     }

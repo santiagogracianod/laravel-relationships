@@ -11,19 +11,24 @@
     @forelse ($users as $user)
         <h3> {{ $user->name }} </h3>
         <p> {{ $user->email }} </p>
-        @if ($user->phone)
-            <p> ( {{ $user->phone->prefix }} ) {{ $user->phone->phone_number }} </p>
 
-        @else
-            <p>No phone</p>
-        @endif
-        @if ($user->phoneSim)
-            <p> {{ $user->phoneSim->company }} </p>
+        <h4>Phone list</h4>
+        <ul>
+            @forelse ($user->phones as $phone)
+                <li> ( {{ $phone->prefix }} ) {{ $phone->phone_number }} </li>
+            @empty
+                No phones found
+            @endforelse
+        </ul>
 
-        @else
-            <p>No sim</p>
-        @endif
-
+        <h4>Sim list</h4>
+        <ul>
+            @forelse ($user->phoneSims as $sim)
+                <li> {{ $sim->company }} </li>
+            @empty
+                No sims found
+            @endforelse
+        </ul>
 
     @empty
         <h1>No users found</h1>
