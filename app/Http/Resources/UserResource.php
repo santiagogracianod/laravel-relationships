@@ -23,10 +23,12 @@ class UserResource extends JsonResource
             'phones' => $this->phones->map(function ($phone) {
                 return '(' . $phone->prefix . ') ' . $phone->phone_number;
             })->toArray(),
-            'roles' => $this->roles
-
-
-
+            'roles' => $this->roles->map(function ($role) {
+                return [
+                    'name' => $role->name,
+                    'added_by' => $role->pivot->added_by
+                ];
+            })->toArray()
         ];
     }
 }

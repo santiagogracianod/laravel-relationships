@@ -13,6 +13,11 @@ class UserController extends Controller
     {
         $users = User::all();
 
+
+        /* foreach ($users as $user) {
+            dd($user->phone->prefix);
+        } */
+
         return view('user.index', compact('users'));
     }
 }

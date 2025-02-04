@@ -9,22 +9,21 @@
 <body>
     <h1>Users list</h1>
     @forelse ($users as $user)
-    <h3> {{ $user->name }} </h3>
-    <p> {{ $user->email }} </p>
-    <h4>Phone list</h4>
-    <ul>
-        @foreach ($user->phones as $phone)
-            <li> ({{ $phone->prefix }}) {{ $phone->phone_number }}</li>
-        @endforeach
-    </ul>
-    <h4>Roles list</h4>
-    <ul>
-        @forelse ($user->roles as $rol)
-            <li> {{ $rol->name }} </li>
-        @empty
-            <p>No roles found</p>
-        @endforelse
-    </ul>
+        <h3> {{ $user->name }} </h3>
+        <p> {{ $user->email }} </p>
+        @if ($user->phone)
+            <p> ( {{ $user->phone->prefix }} ) {{ $user->phone->phone_number }} </p>
+
+        @else
+            <p>No phone</p>
+        @endif
+        @if ($user->phoneSim)
+            <p> {{ $user->phoneSim->company }} </p>
+
+        @else
+            <p>No sim</p>
+        @endif
+
 
     @empty
         <h1>No users found</h1>
