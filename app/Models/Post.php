@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Post extends Model
@@ -10,9 +11,9 @@ class Post extends Model
 
     protected $guarded = [];
 
-    //polymorphic relationship
-    public function image(): MorphOne
+
+    public function image(): MorphMany
     {
-        return $this->morphOne(Image::class,'imageable');
+        return $this->morphMany(Image::class,'imageable');
     }
 }
